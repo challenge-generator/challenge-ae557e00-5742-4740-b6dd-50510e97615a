@@ -1,0 +1,61 @@
+{
+  "name": "@validator-lib/core",
+  "version": "1.0.0",
+  "description": "Angular library for real-time data validation with idempotency support",
+  "keywords": ["angular", "validation", "idempotency", "library"],
+  "author": "Development Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/internal/validator-lib"
+  },
+  "peerDependencies": {
+    "@angular/core": ">=18.0.0 <21.0.0",
+    "@angular/common": ">=18.0.0 <21.0.0",
+    "rxjs": ">=7.0.0 <8.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@angular/core": "20.2.0",
+    "@angular/common": "20.2.0",
+    "@angular/common/http": "20.2.0",
+    "@angular/platform-browser": "20.2.0",
+    "@angular-devkit/build-angular": "20.2.0",
+    "@types/node": "^20.11.0",
+    "ng-packagr": "20.2.0",
+    "typescript": "5.4.2",
+    "vitest": "1.4.0",
+    "@vitest/coverage-c8": "1.4.0",
+    "typedoc": "0.25.0"
+  },
+  "scripts": {
+    "build": "ng build validator-lib",
+    "build:prod": "ng build validator-lib --configuration production",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tslint \"projects/validator-lib/src/**/*.ts\"",
+    "docs": "typedoc projects/validator-lib/src/public-api.ts --out dist/docs",
+    "prepublishOnly": "npm run build",
+    "postpublish": "echo 'Library published successfully'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "sideEffects": false,
+  "module": "fesm2022/validator-lib.mjs",
+  "es2022": "fesm2022/validator-lib.mjs",
+  "fesm2022": "fesm2022/validator-lib.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./fesm2022/validator-lib.mjs"
+    }
+  }
+}

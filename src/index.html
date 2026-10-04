@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Validator App - Biblioteca de Validación en Tiempo Real</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Librería Angular para validación de datos con soporte de idempotencia y manejo de errores">
+  <meta name="keywords" content="Angular, validación, TypeScript, librería, idempotencia">
+  <meta name="author" content="Equipo de Desarrollo">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#1976d2">
+  
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #fafafa;
+      color: #212121;
+    }
+    .app-loading {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .app-loading .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .app-loading .text {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <app-root>
+    <div class="app-loading">
+      <div class="spinner"></div>
+      <div class="text">Cargando Validator App...</div>
+    </div>
+  </app-root>
+  
+  <noscript>
+    <div style="padding: 40px 20px; text-align: center; font-family: 'Inter', sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="max-width: 500px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f44336" stroke-width="2" style="margin-bottom: 20px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 12px; color: #212121;">JavaScript Requerido</h1>
+        <p style="font-size: 15px; line-height: 1.6; color: #757575; margin-bottom: 24px;">
+          Esta aplicación requiere JavaScript para funcionar correctamente. 
+          Por favor, habilite JavaScript en la configuración de su navegador.
+        </p>
+        <a href="https://www.enable-javascript.com/es/" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; padding: 12px 24px; background: #1976d2; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background 0.2s;">
+          Cómo habilitar JavaScript
+        </a>
+      </div>
+    </div>
+  </noscript>
+  
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/ngsw-worker.js').then(function(registration) {
+          console.log('ServiceWorker registrado con alcance:', registration.scope);
+        }, function(err) {
+          console.log('Error al registrar ServiceWorker:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
